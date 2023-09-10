@@ -46,7 +46,7 @@ jobs:
         id: set_output
         run: |
           echo "Python output: ${{ steps.get-ws-bytag.outputs.python_output }}"
-          export WORKSPACE_OUTPUTS=$(echo '${{ steps.get-ws-bytag.outputs.python_output }}' | jq -r '[.data | map(select(.attributes.assessments-enabled == true)) | .[].id] | | tojson')
+          export WORKSPACE_OUTPUTS=$(echo '${{ steps.get-ws-bytag.outputs.python_output }}' | jq -r '[.data | map(select(.attributes.assessments-enabled == true)) | .[].id] | tojson')
           echo "workspace_outputs=$WORKSPACE_OUTPUTS" >> $GITHUB_OUTPUT
     outputs: 
         enabled_workspaces: ${{ steps.set_output.outputs.workspace_outputs }}
