@@ -95,3 +95,8 @@ jobs:
           echo "health_output=$HEALTH_OUT" >> $GITHUB_OUTPUT
         env:
           WORKSPACE_ID: ${{ matrix.workspaces }}
+
+      - name: echo_health
+        id: echo_health
+        run: |
+          echo "${{ steps.get-ws-health.outputs.health_output }}"
