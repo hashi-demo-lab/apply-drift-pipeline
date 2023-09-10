@@ -11,10 +11,22 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
-
+        uses: actions/checkout@v3
       # Add your build and test steps here
       - name: Build and Test
         run: |
           # Replace this with your build and test commands
-          echo "Building and testing..."
+          echo "Scheduled Drift Apply..."
+      - name: Checkout addons
+        uses: actions/checkout@v3
+        with:
+          ref: main
+          repository: hashi-demo-lab/tfc-workflows-github-addon
+          path: addon
+      - name: Setup Python
+        uses: actions/setup-python@v4.6.0
+        with:
+          python-version: '3.10'
+          cache: 'pip'
+      - name: install-python-dep
+        run: pip install -r ./addon/requirements.txt
