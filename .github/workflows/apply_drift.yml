@@ -60,6 +60,13 @@ jobs:
     steps:
       - name: checkout-repo
         uses: actions/checkout@v3
+
+      - name: Checkout addons
+        uses: actions/checkout@v3
+        with:
+          ref: main
+          repository: hashi-demo-lab/tfc-workflows-github-addon
+          path: addon
         
       - name: echo-filename
         run: echo ${{ matrix.workspaces }}
