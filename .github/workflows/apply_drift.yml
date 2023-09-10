@@ -6,7 +6,7 @@ on:
     - cron: '*/5 * * * *'
   workflow_dispatch: # This enables manual triggering
 jobs:
-  build:
+  apply_drift:
     runs-on: ubuntu-latest
 
     steps:
