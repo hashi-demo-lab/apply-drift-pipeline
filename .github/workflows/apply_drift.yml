@@ -74,7 +74,7 @@ jobs:
         run: pip install -r ./addon/requirements.txt
 
       - name: get-workspace-byid
-        id: get-ws-bytag
+        id: get-ws-byid
         run: |
           PYTHON_OUT=$(python ./addon/get-workspace-byid.py)
           echo "python_output=$PYTHON_OUT" >> $GITHUB_OUTPUT
