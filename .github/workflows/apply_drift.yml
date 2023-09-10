@@ -12,7 +12,7 @@ env:
   TF_API_TOKEN: ${{ secrets.TF_API_TOKEN }}
 
 jobs:
-  apply_drift:
+  query_tfe_ws:
     runs-on: ubuntu-latest
 
     steps:
@@ -48,3 +48,20 @@ jobs:
           echo "Python output: ${{ steps.get-ws-bytag.outputs.python_output }}"
           export WORKSPACE_OUTPUTS=$(echo '${{ steps.get-ws-bytag.outputs.python_output }}' | jq -r '[.data | map(select(.attributes."assessments-enabled" == true)) | .[].id]')
           echo "workspace_outputs=$WORKSPACE_OUTPUTS" >> $GITHUB_OUTPUT
+    outputs: 
+        enabled_workspaces: ${{ steps.set_output.outputs.workspace_outputs }}
+
+  apply_drift:
+    needs: [query_tfe_ws]
+    runs-on: ubuntu-latest
+    strategy:
+      max-parallel: 10
+      matrix: 
+        workspaces: ${{fromJson(needs.query_tfe_ws.outputs.enabled_workspaces)}}
+        
+    steps:
+      - name: checkout-repo
+        uses: actions/checkout@v3
+        
+      - name: echo-filename
+        run: echo ${{ matrix.workspaces }}
