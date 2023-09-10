@@ -42,3 +42,7 @@ jobs:
         run: |
           PYTHON_OUT=$(python ./addon/get-workspace-bytag.py)
           echo "python_output=$PYTHON_OUT" >> $GITHUB_OUTPUT
+      - name: set_output
+        id: set_output
+        run: |
+          echo "Python output: ${{ steps.get-ws-bytag.outputs.python_output }}"
