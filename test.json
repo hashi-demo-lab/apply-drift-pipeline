@@ -1,0 +1,92 @@
+{
+  "data": [
+    {
+      "id": "ws-G28ckT1jdT8Q1wwg",
+      "type": "workspaces",
+      "attributes": {
+        "assessments-enabled": false
+      },
+      "links": {
+        "self": "/api/v2/organizations/hashi-demos-apj/workspaces/Ansible",
+        "self-html": "/app/hashi-demos-apj/workspaces/Ansible"
+      }
+    },
+    {
+      "id": "ws-gZYurYavY23753bP",
+      "type": "workspaces",
+      "attributes": {
+        "assessments-enabled": true
+      },
+      "links": {
+        "self": "/api/v2/organizations/hashi-demos-apj/workspaces/f5virtualserverSSL",
+        "self-html": "/app/hashi-demos-apj/workspaces/f5virtualserverSSL"
+      }
+    },
+    {
+      "id": "ws-cnfvkvs6MQAQNxxz",
+      "type": "workspaces",
+      "attributes": {
+        "assessments-enabled": true
+      },
+      "links": {
+        "self": "/api/v2/organizations/hashi-demos-apj/workspaces/ssl_example",
+        "self-html": "/app/hashi-demos-apj/workspaces/ssl_example"
+      }
+    }
+  ],
+  "links": {
+    "self": "https://app.terraform.io/api/v2/organizations/hashi-demos-apj/workspaces?fields%5Bworkspace%5D%5B%5D=assessments_enabled\u0026page%5Bnumber%5D=1\u0026page%5Bsize%5D=20\u0026search%5Btags%5D=f5\u0026sort=name",
+    "first": "https://app.terraform.io/api/v2/organizations/hashi-demos-apj/workspaces?fields%5Bworkspace%5D%5B%5D=assessments_enabled\u0026page%5Bnumber%5D=1\u0026page%5Bsize%5D=20\u0026search%5Btags%5D=f5\u0026sort=name",
+    "prev": null,
+    "next": null,
+    "last": "https://app.terraform.io/api/v2/organizations/hashi-demos-apj/workspaces?fields%5Bworkspace%5D%5B%5D=assessments_enabled\u0026page%5Bnumber%5D=1\u0026page%5Bsize%5D=20\u0026search%5Btags%5D=f5\u0026sort=name"
+  },
+  "meta": {
+    "status-counts": {
+      "pending": 0,
+      "fetching": 0,
+      "fetching-completed": 0,
+      "pre-plan-running": 0,
+      "pre-plan-completed": 0,
+      "queuing": 0,
+      "plan-queued": 0,
+      "planning": 0,
+      "planned": 0,
+      "confirmed": 0,
+      "queuing-apply": 0,
+      "apply-queued": 0,
+      "applying": 0,
+      "applied": 12,
+      "discarded": 0,
+      "errored": 3,
+      "canceled": 0,
+      "cost-estimating": 0,
+      "cost-estimated": 0,
+      "policy-checking": 0,
+      "policy-override": 0,
+      "policy-checked": 0,
+      "policy-soft-failed": 1,
+      "planned-and-finished": 9,
+      "planned-and-saved": 0,
+      "post-plan-running": 0,
+      "post-plan-completed": 0,
+      "pre-apply-running": 0,
+      "pre-apply-completed": 0,
+      "assessing": 0,
+      "assessed": 0,
+      "pre-plan-awaiting-decision": 0,
+      "post-plan-awaiting-decision": 0,
+      "pre-apply-awaiting-decision": 0,
+      "none": 1014,
+      "total": 1039
+    },
+    "pagination": {
+      "current-page": 1,
+      "page-size": 20,
+      "prev-page": null,
+      "next-page": null,
+      "total-pages": 1,
+      "total-count": 3
+    }
+  }
+}
