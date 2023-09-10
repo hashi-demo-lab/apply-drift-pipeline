@@ -83,7 +83,15 @@ jobs:
       - name: get-workspace-byid
         id: get-ws-byid
         run: |
-          PYTHON_OUT=$(python ./addon/get-workspace-byid.py)
-          echo "python_output=$PYTHON_OUT" >> $GITHUB_OUTPUT
+          WS_OUT=$(python ./addon/get-workspace-byid.py)
+          echo "ws_output=$WS_OUT" >> $GITHUB_OUTPUT
+        env:
+          WORKSPACE_ID: ${{ matrix.workspaces }}
+
+      - name: get-workspace-health
+        id: get-ws-health
+        run: |
+          HEALTH_OUT=$(python ./addon/get-workspace-current-assessment.py)
+          echo "health_output=$HEALTH_OUT" >> $GITHUB_OUTPUT
         env:
           WORKSPACE_ID: ${{ matrix.workspaces }}
