@@ -109,9 +109,21 @@ jobs:
         if: ${{ steps.health_assess.outputs.drift_output == 'true' }} 
         id: drifted
         run: |
-          echo "applying ws ${{ matrix.workspaces }}"
+          echo "drifted ws ${{ matrix.workspaces }}"
         env:
           WORKSPACE_ID: ${{ matrix.workspaces }}
+
+
+      - name: apply_ws ## not finished
+        if: ${{ steps.health_assess.outputs.drift_output == 'true' }} 
+        id: apply_ws
+        run: |
+          echo "applying ws ${{ matrix.workspaces }}"
+          APPLY_OUT=$(python ./addon/run-plan-and-apply.py)
+          echo "apply_output=$APPLY_OUT" >> $GITHUB_OUTPUT
+        env:
+          WORKSPACE_ID: ${{ matrix.workspaces }}
+          
 
       - name: health-errored ##not finished
         if: ${{ steps.health_assess.outputs.error_message == 'Assessment errored' }} 
