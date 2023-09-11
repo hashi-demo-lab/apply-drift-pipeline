@@ -96,13 +96,15 @@ jobs:
         env:
           WORKSPACE_ID: ${{ matrix.workspaces }}
 
-      - name: echo_health
-        id: echo_health
+      - name: health_drift
+        id: health_drift
         run: |
           echo "${{ steps.get-ws-health.outputs.health_output }}"
+          export DRIFT_OUT=$(echo '${{ steps.get-ws-health.outputs.health_output }}' | jq -r '.data.attributes.drifted' | tojson')
+          echo "drift_output=$DRIFT_OUT" >> $GITHUB_OUTPUT
 
       - name: drifted ## not finished
-        if: ${{ steps.get-ws-health.outputs.health_output.data.attributes.drifted == 'drifted' }} 
+        if: ${{ steps.health_drift.outputs.drifted == 'true' }} 
         id: drifted
         run: |
           echo "applying ws ${{ matrix.workspaces }}"
