@@ -120,4 +120,4 @@ jobs:
       - name: apply-placeholder ##not finished
         id: apply-placeholder 
         run: |
-        echo "applying ws ${{ matrix.workspaces }}"
+          echo "applying ws ${{ matrix.workspaces }}"
