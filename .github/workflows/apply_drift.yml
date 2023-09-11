@@ -99,4 +99,4 @@ jobs:
       - name: echo_health
         id: echo_health
         run: |
-          echo $(toJson("${{ steps.get-ws-health.outputs.health_output }}"))
+          echo "${{ steps.get-ws-health.outputs.health_output }}"
