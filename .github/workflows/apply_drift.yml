@@ -96,15 +96,17 @@ jobs:
         env:
           WORKSPACE_ID: ${{ matrix.workspaces }}
 
-      - name: health_drift
-        id: health_drift
+      - name: health_assess
+        id: health_assess
         run: |
           echo "${{ steps.get-ws-health.outputs.health_output }}"
           export DRIFT_OUT=$(echo '${{ steps.get-ws-health.outputs.health_output }}' | jq -r '.data.attributes.drifted | tojson')
+          export ERROR_OUT=$(echo '${{ steps.get-ws-health.outputs.health_output }}' | jq -r '.data.attributes.error-message | tojson')
           echo "drift_output=$DRIFT_OUT" >> $GITHUB_OUTPUT
+          echo "error_message=$ERROR_OUT >> $GITHUB_OUTPUT
 
       - name: drifted ## not finished
-        if: ${{ steps.health_drift.outputs.drift_output == 'true' }} 
+        if: ${{ steps.health_assess.outputs.drift_output == 'true' }} 
         id: drifted
         run: |
           echo "applying ws ${{ matrix.workspaces }}"
@@ -112,7 +114,7 @@ jobs:
           WORKSPACE_ID: ${{ matrix.workspaces }}
 
       - name: health-errored ##not finished
-        if: ${{ steps.get-ws-health.outputs.health_output.data.attributes.error-message == 'assessment errored' }} 
+        if: ${{ steps.health_assess.outputs.error_message == 'Assessment errored' }} 
         id: health-errored
         run: |
           echo "health errors ${{ matrix.workspaces }}"
