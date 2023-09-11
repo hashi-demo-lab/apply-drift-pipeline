@@ -100,7 +100,7 @@ jobs:
         id: health_drift
         run: |
           echo "${{ steps.get-ws-health.outputs.health_output }}"
-          export DRIFT_OUT=$(echo '${{ steps.get-ws-health.outputs.health_output }}' | jq -r '.data.attributes.drifted' | tojson')
+          export DRIFT_OUT=$(echo '${{ steps.get-ws-health.outputs.health_output }}' | jq -r '.data.attributes.drifted | tojson')
           echo "drift_output=$DRIFT_OUT" >> $GITHUB_OUTPUT
 
       - name: drifted ## not finished
