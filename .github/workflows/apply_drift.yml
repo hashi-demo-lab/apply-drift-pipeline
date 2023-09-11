@@ -100,3 +100,19 @@ jobs:
         id: echo_health
         run: |
           echo "${{ steps.get-ws-health.outputs.health_output }}"
+
+      - name: drifted
+        if: ${{ steps.get-ws-health.outputs.health_output.data.attributes.drifted == 'drifted' }} 
+        id: drifted
+        run: |
+          echo "applying ws ${{ matrix.workspaces }}"
+        env:
+          WORKSPACE_ID: ${{ matrix.workspaces }}
+
+      - name: health-errored
+        if: ${{ steps.get-ws-health.outputs.health_output.data.attributes.error-message == 'assessment errored' }} 
+        id: health-errored
+        run: |
+          echo "health errors ${{ matrix.workspaces }}"
+        env:
+          WORKSPACE_ID: ${{ matrix.workspaces }}
