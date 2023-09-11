@@ -104,7 +104,7 @@ jobs:
           echo "drift_output=$DRIFT_OUT" >> $GITHUB_OUTPUT
 
       - name: drifted ## not finished
-        if: ${{ steps.health_drift.outputs.drifted == 'true' }} 
+        if: ${{ steps.health_drift.outputs.drift_output == 'true' }} 
         id: drifted
         run: |
           echo "applying ws ${{ matrix.workspaces }}"
