@@ -100,10 +100,10 @@ jobs:
         id: health_assess
         run: |
           echo "${{ steps.get-ws-health.outputs.health_output }}"
-          export DRIFT_OUT=$(echo '${{ steps.get-ws-health.outputs.health_output }}' | jq -r '.data.attributes.drifted | tojson')
-          export ERROR_OUT=$(echo '${{ steps.get-ws-health.outputs.health_output }}' | jq -r '.data.attributes.error-message | tojson')
+          export DRIFT_OUT=$(echo '${{ steps.get-ws-health.outputs.health_output }}' | jq -r '.data.attributes.drifted')
+          export ERROR_OUT=$(echo '${{ steps.get-ws-health.outputs.health_output }}' | jq -r '.data.attributes.error-message')
           echo "drift_output=$DRIFT_OUT" >> $GITHUB_OUTPUT
-          echo "error_message=$ERROR_OUT >> $GITHUB_OUTPUT
+          echo "error_message=$ERROR_OUT" >> $GITHUB_OUTPUT
 
       - name: drifted ## not finished
         if: ${{ steps.health_assess.outputs.drift_output == 'true' }} 
