@@ -115,7 +115,7 @@ jobs:
           WORKSPACE_ID: ${{ matrix.workspaces }}
 
 
-      - name: apply_ws ## not finished
+      - name: apply_ws 
         if: ${{ steps.health_assess.outputs.drift_output == 'true' }} 
         id: apply_ws
         run: |
@@ -126,15 +126,10 @@ jobs:
           WORKSPACE_ID: ${{ matrix.workspaces }}
           
 
-      - name: health-errored ##not finished
+      - name: health-errored 
         if: ${{ steps.health_assess.outputs.error_message == 'Assessment errored' }} 
         id: health-errored
         run: |
           echo "health errors ${{ matrix.workspaces }}"
         env:
           WORKSPACE_ID: ${{ matrix.workspaces }}
-
-      - name: apply-placeholder ##not finished
-        id: apply-placeholder 
-        run: |
-          echo "applying ws ${{ matrix.workspaces }}"
