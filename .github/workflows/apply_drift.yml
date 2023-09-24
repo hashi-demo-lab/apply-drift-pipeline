@@ -1,8 +1,8 @@
 name: Scheduled Pipeline
 
 on:
-  schedule:
-    - cron: '0 */4 * * *'
+  #schedule:
+  #  - cron: '0 */4 * * *'
     # Define the cron schedule for every 4 hours
     
   workflow_dispatch: # This enables manual triggering
